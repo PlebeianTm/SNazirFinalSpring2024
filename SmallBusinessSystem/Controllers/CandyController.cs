@@ -31,7 +31,7 @@ namespace SmallBusinessSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Candy candyObj, IFormFile imgFile)
+        public IActionResult Create(Candy candyObj, IFormFile? imgFile)
         {
             if (ModelState.IsValid) 
             {
@@ -39,7 +39,7 @@ namespace SmallBusinessSystem.Controllers
 
                 if(imgFile != null) 
                 {
-                    using (var fileStream = new FileStream(Path.Combine(wwwrootPath, @"Images/CandyImages/" + imgFile.FileName), FileMode.Create))
+                    using (var fileStream = new FileStream(Path.Combine(wwwrootPath, @"\Images\CandyImages\" + imgFile.FileName), FileMode.Create))
                     {
                         imgFile.CopyTo(fileStream);
                     }
