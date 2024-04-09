@@ -5,10 +5,12 @@
 <div class="col-md-10">
 
     <form asp-action="Create">
+
+       
         <div class="form-group m-4">
             <label asp-for="CandyName"></label>
             <input asp-for="CandyName" class="form-control" />
-            <span asp-validatition-for="Description" class="text-danger"></span>
+            <span asp-validatition-for="CandyName" class="text-danger"></span>
         </div>
 
         <div class="form-group m-4">
@@ -33,7 +35,7 @@
 
         <div class="form-group m-4">
 
-            <input type="Submit" value="Add Candy" class="form-control btn btn-primary" />
+            <input type="submit" value="Add Candy" class="form-control btn btn-primary" />
 
         </div>
 

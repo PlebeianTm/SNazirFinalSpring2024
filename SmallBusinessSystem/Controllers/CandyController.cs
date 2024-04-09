@@ -4,6 +4,7 @@ using Microsoft.Data;
 using Microsoft.EntityFrameworkCore;
 using SmallBusinessSystem.Data;
 using SmallBusinessSystem.Models;
+using System;
 using System.IO;
 
 namespace SmallBusinessSystem.Controllers
@@ -12,9 +13,11 @@ namespace SmallBusinessSystem.Controllers
     {
         private CandyDbContext _dbContext;
         private IWebHostEnvironment _enviornment;
-        public CandyController(CandyDbContext dbContext)
+
+        public CandyController(CandyDbContext dbContext,IWebHostEnvironment environment)
         {
             _dbContext = dbContext;
+            _enviornment = environment;
         }
 
         public IActionResult Index() //right click index to create folder 
@@ -31,10 +34,10 @@ namespace SmallBusinessSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Candy candyObj, IFormFile? imgFile)
+        public IActionResult Create(Candy candyObj, IFormFile imgFile)
         {
-            if (ModelState.IsValid) 
-            {
+            //if (ModelState.IsValid) 
+           // {
                 string wwwrootPath = _enviornment.WebRootPath;
 
                 if(imgFile != null) 
@@ -49,9 +52,9 @@ namespace SmallBusinessSystem.Controllers
                 _dbContext.SaveChanges();
 
                 return RedirectToAction("Index", "Candy"); 
-            }
+           // }
 
-            return View(candyObj);
+            //return View(candyObj);
 
         }
 
