@@ -78,8 +78,8 @@ namespace SmallBusinessSystem.Controllers
                 _dbContext.SaveChanges();
 
                 return RedirectToAction("Index", "Candy");
-            }
 
+            }
             return View(candyObj);
         }
 

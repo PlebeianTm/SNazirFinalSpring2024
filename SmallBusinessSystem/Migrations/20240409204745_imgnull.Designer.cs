@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallBusinessSystem.Data;
 
@@ -11,9 +12,11 @@ using SmallBusinessSystem.Data;
 namespace SmallBusinessSystem.Migrations
 {
     [DbContext(typeof(CandyDbContext))]
-    partial class CandyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240409204745_imgnull")]
+    partial class imgnull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,7 +260,7 @@ namespace SmallBusinessSystem.Migrations
                             CandyPrice = 5.99m,
                             CandyQty = 100,
                             Description = "Sweet chewy worm candy",
-                            ImgUrl = "\\Images\\CandyImages\\GummyWorms.jpeg"
+                            ImgUrl = ""
                         },
                         new
                         {
@@ -266,7 +269,7 @@ namespace SmallBusinessSystem.Migrations
                             CandyPrice = 2.99m,
                             CandyQty = 140,
                             Description = "Store exclusive homestyle chocolate bar.",
-                            ImgUrl = "\\Images\\CandyImages\\ChocolateBar.jpeg"
+                            ImgUrl = ""
                         },
                         new
                         {
@@ -275,7 +278,7 @@ namespace SmallBusinessSystem.Migrations
                             CandyPrice = 6.99m,
                             CandyQty = 130,
                             Description = "Sweet chewy worm candy with sour sugar coating on top",
-                            ImgUrl = "\\Images\\CandyImages\\SourGummyWorms.jpeg"
+                            ImgUrl = ""
                         },
                         new
                         {
@@ -284,7 +287,7 @@ namespace SmallBusinessSystem.Migrations
                             CandyPrice = 6.99m,
                             CandyQty = 100,
                             Description = "Peanut butter center with chocolate cover on the outside.",
-                            ImgUrl = "\\Images\\CandyImages\\PeanutButterCups.png"
+                            ImgUrl = ""
                         },
                         new
                         {
@@ -293,7 +296,7 @@ namespace SmallBusinessSystem.Migrations
                             CandyPrice = 3.99m,
                             CandyQty = 200,
                             Description = "Salted almonds covered in our hometyle milk chocolate.",
-                            ImgUrl = "\\Images\\CandyImages\\CoveredAlmonds.jpeg"
+                            ImgUrl = ""
                         });
                 });
 
