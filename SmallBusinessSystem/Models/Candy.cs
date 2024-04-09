@@ -9,6 +9,12 @@ namespace SmallBusinessSystem.Models
     {
         [Key]
         public int CandyId { get; set; }
+        
+        public string CandyName { get; set; }
+        public string Description { get; set; }
+        public decimal CandyPrice { get; set; }
+        public string ImgUrl { get; set; }
+
 
 
     }
