@@ -13,7 +13,7 @@ namespace SmallBusinessSystem.Models
         public string CandyName { get; set; }
         public string Description { get; set; }
         public decimal CandyPrice { get; set; }
-        public string ImgUrl { get; set; }
+        public string? ImgUrl { get; set; }
 
         public int CandyQty { get; set; }
 
