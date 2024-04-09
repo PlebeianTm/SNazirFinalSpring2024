@@ -19,6 +19,13 @@ namespace SmallBusinessSystem.Controllers
 
             return View(listOfCandy);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Create(Candy candyObj)
         {
@@ -33,6 +40,8 @@ namespace SmallBusinessSystem.Controllers
             return View(candyObj);
 
         }
+
+
 
         public IActionResult Details()
         {
