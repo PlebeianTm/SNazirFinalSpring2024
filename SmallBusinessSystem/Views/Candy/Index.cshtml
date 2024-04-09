@@ -9,8 +9,10 @@
         <thead>
             <tr>
 
-                <th>Class Name</th>
-                <th>Desscription</th>
+                <th>Candy Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                
 
                 <th>  </th>
             </tr>
@@ -19,19 +21,21 @@
         <tbody>
             @foreach (var eachCandy in Model)
             {
-                @* <tr>
+                 <tr>
 
-                    <td>@eachClass.ClassName</td>
-                    <td>@eachClass.Description</td>
+                    <td>@eachCandy.CandyName</td>
+                    <td>@eachCandy.Description</td>
+                    <td>@eachCandy.CandyPrice</td>
 
 
                     <td>
-                        <a asp-controller="Candy" asp-action="Edit" asp-route-id="@eachClass.ClassID">Edit</a>
-                         <a asp-controller="Instructor" asp-action="Delete" asp-route-id="@eachInstructor.InstructorID">Delete</a> |
-    
-                        <a asp-controller="Candy" asp-action="Details" asp-route-id="@eachCategory.CategoryID">Details</a>
+                        <a asp-controller="Candy" asp-action="Edit" asp-route-id="@eachCandy.CandyId">Edit</a>
+                       @*  <a asp-controller="Instructor" asp-action="Delete" asp-route-id="@eachCandy.InstructorID">Delete</a> | *@
+
+                    
                     </td>
-                </tr> *@
+                    <td><a asp-controller="Candy" asp-action="Details" asp-route-id="@eachCandy.CandyId">Details</a></td>
+                </tr> 
             }
         </tbody>
 
@@ -43,6 +47,6 @@
     <div class="col-6">
     </div>
     <div class="col-6">
-        <a asp-controller="Course" asp-action="Create" class="btn btn-primary">Create New Instructor</a>
+        <a asp-controller="Candy" asp-action="Create" class="btn btn-primary">Create New Instructor</a>
     </div>
 </div>
