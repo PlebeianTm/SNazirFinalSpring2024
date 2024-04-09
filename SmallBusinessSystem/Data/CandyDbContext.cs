@@ -25,7 +25,7 @@ namespace SmallBusinessSystem.Data
                     CandyName = "Gummy Worms", 
                     Description = "Sweet chewy worm candy",
                     CandyPrice = 5.99m, 
-                    ImgUrl = "",
+                    ImgUrl = @"\Images\CandyImages\GummyWorms.jpeg",
                     CandyQty = 100
                 },
                 new Candy
@@ -34,7 +34,7 @@ namespace SmallBusinessSystem.Data
                     CandyName = "Homestyle Milk Chocolate Bar",
                     Description = "Store exclusive homestyle chocolate bar.",
                     CandyPrice = 2.99m,
-                    ImgUrl = "",
+                    ImgUrl = @"\Images\CandyImages\ChocolateBar.jpeg",
                     CandyQty = 140
                 },
                 new Candy
@@ -43,7 +43,7 @@ namespace SmallBusinessSystem.Data
                     CandyName = "Sour Gummy Worms",
                     Description = "Sweet chewy worm candy with sour sugar coating on top",
                     CandyPrice = 6.99m,
-                    ImgUrl = "",
+                    ImgUrl = @"\Images\CandyImages\SourGummyWorms.jpeg",
                     CandyQty = 130
                 },
                 new Candy
@@ -52,7 +52,7 @@ namespace SmallBusinessSystem.Data
                     CandyName = "Homestyle Peanut Butter Cups",
                     Description = "Peanut butter center with chocolate cover on the outside.",
                     CandyPrice = 6.99m,
-                    ImgUrl = "",
+                    ImgUrl = @"\Images\CandyImages\PeanutButterCups.png",
                     CandyQty = 100
                 },
                 new Candy
@@ -61,7 +61,7 @@ namespace SmallBusinessSystem.Data
                     CandyName = "Chocolate Covered Almonds",
                     Description = "Salted almonds covered in our hometyle milk chocolate.",
                     CandyPrice = 3.99m,
-                    ImgUrl = "", 
+                    ImgUrl = @"\Images\CandyImages\CoveredAlmonds.jpeg", 
                     CandyQty = 200
                 }
                 );
