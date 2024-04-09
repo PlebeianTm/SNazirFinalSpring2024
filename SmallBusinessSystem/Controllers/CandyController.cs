@@ -1,18 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SmallBusinessSystem.Data;
+using SmallBusinessSystem.Models;
 
 namespace SmallBusinessSystem.Controllers
 {
     public class CandyController : Controller
     {
-        public CandyController(Candy dbContext)
+        private CandyDbContext _dbContext;
+        public CandyController(CandyDbContext dbContext)
         {
             _dbContext = dbContext;
-
         }
+
         public IActionResult Index() //right click index to create folder 
         {
-            var listOfCandy = _dbContext.Candy.ToList();
+            var listOfCandy = _dbContext.Candies.ToList();
 
             return View(listOfCandy);
         }
@@ -21,7 +24,7 @@ namespace SmallBusinessSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Candy.Add(candyObj);
+                _dbContext.Candies.Add(candyObj);
                 _dbContext.SaveChanges();
 
                 return RedirectToAction("Index", "Candy");
