@@ -34,7 +34,7 @@ namespace SmallBusinessSystem.Controllers
 
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
             var listOfCandy = _dbContext.Candies.ToList();
             return View(listOfCandy);
