@@ -17,21 +17,21 @@
 
         </thead>
         <tbody>
-            @foreach (var eachClass in Model)
+            @foreach (var eachCandy in Model)
             {
-                <tr>
+                @* <tr>
 
                     <td>@eachClass.ClassName</td>
                     <td>@eachClass.Description</td>
 
 
                     <td>
-                        <a asp-controller="Course" asp-action="Edit" asp-route-id="@eachClass.ClassID">Edit</a>
-                        @* <a asp-controller="Instructor" asp-action="Delete" asp-route-id="@eachInstructor.InstructorID">Delete</a> |
-
-                    <a asp-controller="Category" asp-action="Details" asp-route-id="@eachCategory.CategoryID">Details</a> *@
+                        <a asp-controller="Candy" asp-action="Edit" asp-route-id="@eachClass.ClassID">Edit</a>
+                         <a asp-controller="Instructor" asp-action="Delete" asp-route-id="@eachInstructor.InstructorID">Delete</a> |
+    
+                        <a asp-controller="Candy" asp-action="Details" asp-route-id="@eachCategory.CategoryID">Details</a>
                     </td>
-                </tr>
+                </tr> *@
             }
         </tbody>
 

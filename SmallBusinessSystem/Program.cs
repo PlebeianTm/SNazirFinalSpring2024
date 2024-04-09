@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using SmallBusinessSystem.Data;
+
 namespace SmallBusinessSystem
 {
     public class Program
@@ -8,6 +11,8 @@ namespace SmallBusinessSystem
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            var connString = builder.Configuration.GetConnectionString("DefaultConnection"); // necessary
+            builder.Services.AddDbContext<CandyDbContext>(options => options.UseSqlServer(connString));
 
             var app = builder.Build();
 
