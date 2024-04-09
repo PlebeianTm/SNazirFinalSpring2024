@@ -60,5 +60,28 @@ namespace SmallBusinessSystem.Controllers
             var listOfCandy = _dbContext.Candies.ToList();
             return View(listOfCandy);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Candy candy= _dbContext.Candies.Find(id);
+
+            return View(candy);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, [Bind("CandyId, CandyName, Description, CandyPrice,ImgUrl,CandyQty")] Candy candyObj)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.Candies.Update(candyObj);
+                _dbContext.SaveChanges();
+
+                return RedirectToAction("Index", "Candy");
+            }
+
+            return View(candyObj);
+        }
+
     }
 }
