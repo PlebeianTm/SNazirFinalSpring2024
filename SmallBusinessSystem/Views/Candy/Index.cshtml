@@ -12,8 +12,9 @@
                 <th>Candy Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Quantity</th>
                 <th>Edit</th>
-                <th>Details</th>
+               @*  <th>Details</th> *@
                 
 
          
@@ -37,7 +38,7 @@
 
                     
                     </td>
-                    <td><a asp-controller="Candy" asp-action="Details" asp-route-id="@eachCandy.CandyId">Details</a></td>
+                   @*  <td><a asp-controller="Candy" asp-action="Details" asp-route-id="@eachCandy.CandyId">Details</a></td> *@
                 </tr> 
             }
         </tbody>
