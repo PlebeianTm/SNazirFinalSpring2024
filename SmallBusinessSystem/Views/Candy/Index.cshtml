@@ -1,0 +1,48 @@
+﻿@model List<Candy>
+
+
+<h1>Course List </h1>
+
+
+<div class="pt-2 pb-2">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+
+                <th>Class Name</th>
+                <th>Desscription</th>
+
+                <th>  </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var eachClass in Model)
+            {
+                <tr>
+
+                    <td>@eachClass.ClassName</td>
+                    <td>@eachClass.Description</td>
+
+
+                    <td>
+                        <a asp-controller="Course" asp-action="Edit" asp-route-id="@eachClass.ClassID">Edit</a>
+                        @* <a asp-controller="Instructor" asp-action="Delete" asp-route-id="@eachInstructor.InstructorID">Delete</a> |
+
+                    <a asp-controller="Category" asp-action="Details" asp-route-id="@eachCategory.CategoryID">Details</a> *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>
+
+<div>
+    <div class="col-6">
+    </div>
+    <div class="col-6">
+        <a asp-controller="Course" asp-action="Create" class="btn btn-primary">Create New Instructor</a>
+    </div>
+</div>
