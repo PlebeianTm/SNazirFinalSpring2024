@@ -33,5 +33,11 @@ namespace SmallBusinessSystem.Controllers
             return View(candyObj);
 
         }
+
+        public IActionResult Details()
+        {
+            var listOfCandy = _dbContext.Candies.ToList();
+            return View(listOfCandy);
+        }
     }
 }
