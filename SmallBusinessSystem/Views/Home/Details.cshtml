@@ -1,0 +1,37 @@
+﻿@model Candy
+
+<h1>Details</h1>
+
+<div class="pt-2 pb-2">
+    <form >
+
+        <input type="hidden" asp-action="CandyId" />
+
+        <div class="form-group m-4">
+            <label asp-for="CandyName"></label>
+            <input asp-for="CandyName" disabled class="form-control" />
+        </div>
+
+        <div class="form-group m-4">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" disabled class="form-control" />
+        </div>
+
+        <div class="form-group m-4">
+            <label asp-for="CandyPrice"></label>
+            <input asp-for="CandyPrice" disabled class="form-control" />
+        </div>
+
+        <div class="form-group m-4">
+            <label asp-for="ImgUrl"></label>
+            <input asp-for="ImgUrl" disabled class="form-control" />
+        </div>
+
+        <div class="form-group m-4">
+            <label asp-for="CandyQty"></label>
+            <input asp-for="CandyQty" disabled class="form-control" />
+        </div>
+
+    </form>
+</div>
+
