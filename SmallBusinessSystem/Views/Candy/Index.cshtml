@@ -1,7 +1,7 @@
 ﻿@model List<Candy>
 
 
-<h1>Course List </h1>
+<h1>Candies List </h1>
 
 
 <div class="pt-2 pb-2">
@@ -12,9 +12,11 @@
                 <th>Candy Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Edit</th>
+                <th>Details</th>
                 
 
-                <th>  </th>
+         
             </tr>
 
         </thead>
@@ -26,6 +28,7 @@
                     <td>@eachCandy.CandyName</td>
                     <td>@eachCandy.Description</td>
                     <td>@eachCandy.CandyPrice</td>
+                    <td>@eachCandy.CandyQty</td>
 
 
                     <td>
@@ -47,6 +50,6 @@
     <div class="col-6">
     </div>
     <div class="col-6">
-        <a asp-controller="Candy" asp-action="Create" class="btn btn-primary">Create New Instructor</a>
+        <a asp-controller="Candy" asp-action="Create" class="btn btn-primary">Create New Candy</a>
     </div>
 </div>

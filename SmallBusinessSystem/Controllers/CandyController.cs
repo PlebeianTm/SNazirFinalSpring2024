@@ -19,6 +19,13 @@ namespace SmallBusinessSystem.Controllers
 
             return View(listOfCandy);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Create(Candy candyObj)
         {
@@ -34,7 +41,7 @@ namespace SmallBusinessSystem.Controllers
 
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details()
         {
             var listOfCandy = _dbContext.Candies.ToList();
             return View(listOfCandy);
