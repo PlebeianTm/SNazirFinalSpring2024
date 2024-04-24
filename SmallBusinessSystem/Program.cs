@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SmallBusinessSystem.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace SmallBusinessSystem
 {
@@ -13,6 +14,8 @@ namespace SmallBusinessSystem
             builder.Services.AddControllersWithViews();
             var connString = builder.Configuration.GetConnectionString("DefaultConnection"); // necessary
             builder.Services.AddDbContext<CandyDbContext>(options => options.UseSqlServer(connString));
+
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CandyDbContext>();
 
             var app = builder.Build();
 
