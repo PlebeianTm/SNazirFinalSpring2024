@@ -1,8 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Candy>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="row">
+
+    @foreach (var eachCandy in Model)
+    {
+        <div class="col-3 mb-5">
+
+            <div class="card col-12 m-2 p-2 border-2 shadow border-rounded">
+                <img class="card-img-top" />
+
+                <h3 class="card-title text-center text-uppercase">@eachCandy.CandyName</h3>
+
+                <div class="card-body">
+
+                    <p class="card-text text-center">
+
+                        @eachCandy.CandyPrice
+                        <br />
+                        @eachCandy.Description
+                        <br />
+
+                    </p>
+
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@eachCandy.CandyId" class="btn btn-primary">Details</a>
+
+                </div>
+
+            </div>
+        </div>
+    }
+
 </div>
