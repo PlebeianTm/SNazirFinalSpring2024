@@ -8,6 +8,8 @@ using System.Security.Claims;
 
 namespace SmallBusinessSystem.Areas.Customer.Controllers
 {
+    [Area("Customer")]
+
     public class HomeController : Controller
     {
         private CandyDbContext _dbContext;

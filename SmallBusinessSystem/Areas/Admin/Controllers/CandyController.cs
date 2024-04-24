@@ -9,6 +9,8 @@ using System.IO;
 
 namespace SmallBusinessSystem.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+
     public class CandyController : Controller
     {
         private CandyDbContext _dbContext;
