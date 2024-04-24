@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SmallBusinessSystem.Data
 {
-    public class CandyDbContext : IdentityDbContext
+    public class CandyDbContext : IdentityDbContext<IdentityUser>
     {
         public CandyDbContext(DbContextOptions<CandyDbContext> options) : base(options) 
         { 
