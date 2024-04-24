@@ -13,12 +13,12 @@ namespace SmallBusinessSystem.Areas.Customer.Controllers
             _dbContext = dbContext;
         }
 
-        public IActionResult Index()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //var cartItemList = _dbContext.Candies.Where();
+        //public IActionResult Index()
+        //{
+        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    //var cartItemList = _dbContext.Candies.Where();
 
-        }
+        //}
     }
 
 }
