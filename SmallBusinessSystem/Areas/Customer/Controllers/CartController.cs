@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using SmallBusinessSystem.Data;
 using System.Security.Claims;
 
-namespace SmallBusinessSystem.Controllers
+namespace SmallBusinessSystem.Areas.Customer.Controllers
 {
     public class CartController : Controller
     {
         private CandyDbContext _dbContext;
         public CartController(CandyDbContext dbContext)
         {
-            _dbContext = dbContext; 
+            _dbContext = dbContext;
         }
 
         public IActionResult Index()

@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Security.Claims;
 
-namespace SmallBusinessSystem.Controllers
+namespace SmallBusinessSystem.Areas.Customer.Controllers
 {
     public class HomeController : Controller
     {
-        private CandyDbContext _dbContext; 
+        private CandyDbContext _dbContext;
 
         private readonly ILogger<HomeController> _logger;
 
@@ -28,7 +28,7 @@ namespace SmallBusinessSystem.Controllers
 
         public IActionResult Details(int id)
         {
-            Candy candy = _dbContext.Candies.Find(id); 
+            Candy candy = _dbContext.Candies.Find(id);
 
 
             var cart = new Cart
