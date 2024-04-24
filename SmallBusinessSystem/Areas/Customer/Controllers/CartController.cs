@@ -5,6 +5,8 @@ using System.Security.Claims;
 
 namespace SmallBusinessSystem.Areas.Customer.Controllers
 {
+    [Area("Customer")]
+
     public class CartController : Controller
     {
         private CandyDbContext _dbContext;
