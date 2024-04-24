@@ -17,6 +17,7 @@ namespace SmallBusinessSystem.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             //var cartItemList = _dbContext.Candies.Where();
+
         }
     }
 
