@@ -260,7 +260,7 @@ namespace SmallBusinessSystem.Migrations
 
                     b.HasKey("CandyId");
 
-                    b.ToTable("Candies");
+                    b.ToTable("Candies", (string)null);
 
                     b.HasData(
                         new
@@ -334,7 +334,7 @@ namespace SmallBusinessSystem.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("SmallBusinessSystem.ApplicationUser", b =>

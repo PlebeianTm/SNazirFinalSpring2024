@@ -22,7 +22,8 @@ namespace SmallBusinessSystem.Areas.Customer.Controllers
         //public IActionResult Index()
         //{
         //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    //var cartItemList = _dbContext.Candies.Where();
+        //    var cartItemList = _dbContext.Carts.Where(c => c.UserId == userId).Include(c => c.Candy);
+            
 
         //}
     }
