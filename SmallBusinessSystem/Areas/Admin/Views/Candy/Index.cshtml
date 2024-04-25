@@ -10,7 +10,8 @@
                 <th>Description</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Edit</th>
+                <th>Edit | Delete</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -23,8 +24,8 @@
                     <td>@eachCandy.CandyQty</td>
 
                     <td>
-                        <a asp-controller="Candy" asp-action="Edit" asp-route-id="@eachCandy.CandyId">Edit</a> |
-                        <a asp-controller="Candy" asp-action="Delete" asp-route-id="@eachCandy.CandyId">Delete</a>
+                        <a asp-controller="Book" asp-action="Edit" asp-route-id="@eachCandy.CandyId">Edit</a> |
+                        <a asp-controller="Book" asp-action="Delete" asp-route-id="@eachCandy.CandyId">Delete</a>
                     </td>
                 </tr>
             }

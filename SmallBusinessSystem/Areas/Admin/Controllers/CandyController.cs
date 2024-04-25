@@ -113,5 +113,39 @@ namespace SmallBusinessSystem.Areas.Admin.Controllers
             return View(candyObj); 
         }
 
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Candy candy = _dbContext.Candies.Find(id);
+
+            return View(candy);
+        }
+
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult DeletePOST(int id)
+        {
+            Candy candyObj = _dbContext.Candies.Find(id);//fetches the record
+
+
+            // Delete associated image file if it exists
+            if (!string.IsNullOrEmpty(candyObj.ImgUrl))
+            {
+                string wwwrootPath = _environment.WebRootPath;
+                var imgPath = Path.Combine(wwwrootPath, candyObj.ImgUrl.TrimStart('\\'));
+                if (System.IO.File.Exists(imgPath))
+                {
+                    System.IO.File.Delete(imgPath);
+                }
+            }
+
+            _dbContext.Candies.Remove(candyObj);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

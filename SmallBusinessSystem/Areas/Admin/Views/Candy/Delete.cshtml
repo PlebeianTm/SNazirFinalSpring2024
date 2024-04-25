@@ -1,0 +1,47 @@
+﻿@model Candy
+
+<h1>Delete Candy</h1>
+
+<div class="border col-md-10">
+    <form asp-action="Delete" enctype="multipart/form-data">
+            <input asp-for="CandyId" hidden />
+            <input asp-for="ImgUrl" hidden />
+
+            <div class="form-group m-4">
+                <label asp-for="CandyName" class="control-label">Candy Name</label>
+                <input asp-for="CandyName" disabled class="form-control" />
+            </div>
+
+            <div class="form-group m-4">
+                <label asp-for="Description" class="control-label">Description</label>
+                <input asp-for="Description" disabled class="form-control" />
+            </div>
+
+            <div class="form-group m-4">
+                <label asp-for="CandyPrice" class="control-label">Candy Price</label>
+                <input asp-for="CandyPrice" disabled class="form-control" />
+            </div>
+
+            <div class="form-group m-4">
+                <label asp-for="CandyQty" class="control-label">Candy Quantity</label>
+                <input asp-for="CandyQty" disabled class="form-control" />
+            </div>
+
+            <div class="form-group m-4">
+                <label asp-for="ImgUrl" class="control-label">Candy Image</label>
+                <input type="file" name="imgFile" asp-for="ImgUrl"  disabled class="form-control" />
+            </div>
+
+        <div class="form-group m-4">
+
+            <input type="Submit" value="Delete Candy" class="form-control btn btn-danger" />
+        </div>
+
+
+
+    </form>
+
+
+
+
+</div>
