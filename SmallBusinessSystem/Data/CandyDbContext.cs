@@ -18,6 +18,7 @@ namespace SmallBusinessSystem.Data
         public DbSet<Cart> Carts { get; set; }
 
         public DbSet<Order> Orders { get; set; }    
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
