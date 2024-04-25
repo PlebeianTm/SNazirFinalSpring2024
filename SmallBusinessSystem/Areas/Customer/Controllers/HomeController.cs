@@ -44,32 +44,32 @@ namespace SmallBusinessSystem.Areas.Customer.Controllers
             return View(cart);
 
         }
-        //[HttpPost]
-        //[Authorize]
-        //public IActionResult Details(Cart cart)
-        //{
-        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); //fetches user ID
+        [HttpPost]
+        [Authorize]
+        public IActionResult Details(Cart cart)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); //fetches user ID
 
-        //    cart.UserId = userId;
+            cart.UserId = userId;
 
-        //    Cart existingCart = _dbContext.Carts.FirstOrDefault(c => c.UserId == userId && c.BookId == cart.BookId);
+            Cart existingCart = _dbContext.Carts.FirstOrDefault(c => c.UserId == userId && c.CandyId == cart.CandyId);
 
-        //    if (existingCart != null)
-        //    {
-        //        //update cart
+            if (existingCart != null)
+            {
+                //update cart
 
-        //        existingCart.Quantity += cart.Quantity;
-        //    }
-        //    else
-        //    {
-        //        _dbContext.Carts.Add(cart);
-        //    }
+                existingCart.Quantity += cart.Quantity;
+            }
+            else
+            {
+                _dbContext.Carts.Add(cart);
+            }
 
 
-        //    _dbContext.SaveChanges();
+            _dbContext.SaveChanges();
 
-        //    return RedirectToAction("Index");
-        //}
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Privacy()
         {
