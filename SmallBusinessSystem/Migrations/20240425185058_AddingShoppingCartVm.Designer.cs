@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallBusinessSystem.Data;
 
@@ -11,9 +12,11 @@ using SmallBusinessSystem.Data;
 namespace SmallBusinessSystem.Migrations
 {
     [DbContext(typeof(CandyDbContext))]
-    partial class CandyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240425185058_AddingShoppingCartVm")]
+    partial class AddingShoppingCartVm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,7 +263,7 @@ namespace SmallBusinessSystem.Migrations
 
                     b.HasKey("CandyId");
 
-                    b.ToTable("Candies", (string)null);
+                    b.ToTable("Candies");
 
                     b.HasData(
                         new
@@ -334,7 +337,7 @@ namespace SmallBusinessSystem.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Carts", (string)null);
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("SmallBusinessSystem.Models.Order", b =>
@@ -406,7 +409,7 @@ namespace SmallBusinessSystem.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("SmallBusinessSystem.ApplicationUser", b =>
