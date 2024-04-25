@@ -12,8 +12,13 @@ using SmallBusinessSystem.Data;
 namespace SmallBusinessSystem.Migrations
 {
     [DbContext(typeof(CandyDbContext))]
+<<<<<<<< HEAD:SmallBusinessSystem/Migrations/20240425033759_helppppppp.Designer.cs
     [Migration("20240425033759_helppppppp")]
     partial class helppppppp
+========
+    [Migration("20240425004739_remove-migation")]
+    partial class removemigation
+>>>>>>>> d711e562aaf678dbf9568bc8a8461cd2c6ac3e52:SmallBusinessSystem/Migrations/20240425004739_remove-migation.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
