@@ -10,7 +10,7 @@ using SmallBusinessSystem.Models.ViewModels;
 namespace SmallBusinessSystem.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    [Authorize(Roles = "Customer")]
+    //[Authorize(Roles = "Customer")]
     public class CartController : Controller
     {
         private CandyDbContext _dbContext;
@@ -36,6 +36,40 @@ namespace SmallBusinessSystem.Areas.Customer.Controllers
                 shoppingCartVM.Order.OrderTotal += cartItem.SubTotal;
             }
             return View(shoppingCartVM);
+        }
+        public IActionResult IncrementByOne(int id)
+        {
+            Cart cart = _dbContext.Carts.Find(id);
+            cart.Quantity++;
+            _dbContext.Update(cart);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public IActionResult DecrementByOne(int id)
+        {
+            Cart cart = _dbContext.Carts.Find(id);
+            if (cart.Quantity <= 1)
+            {
+                //remove the item
+                _dbContext.Carts.Remove(cart);
+                _dbContext.SaveChanges();
+            }
+            else
+            {
+                cart.Quantity--;
+                _dbContext.Update(cart);
+                _dbContext.SaveChanges();
+            }
+
+
+            return RedirectToAction("Index");
+        }
+        public IActionResult RemoveFromCart(int id)
+        {
+            Cart cart = _dbContext.Carts.Find(id);
+            _dbContext.Carts.Remove(cart);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 
