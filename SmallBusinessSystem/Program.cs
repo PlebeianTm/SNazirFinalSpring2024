@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SmallBusinessSystem.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace SmallBusinessSystem
 {
@@ -12,10 +13,16 @@ namespace SmallBusinessSystem
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
             var connString = builder.Configuration.GetConnectionString("DefaultConnection"); // necessary
+
             builder.Services.AddDbContext<CandyDbContext>(options => options.UseSqlServer(connString));
 
-            builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<CandyDbContext>();
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<CandyDbContext>().AddDefaultTokenProviders();
+
+            builder.Services.AddRazorPages();
+
+            builder.Services.AddScoped<IEmailSender, EmailSender>();
 
             var app = builder.Build();
 
@@ -32,6 +39,7 @@ namespace SmallBusinessSystem
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapRazorPages();
