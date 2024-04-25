@@ -5,7 +5,7 @@
 namespace SmallBusinessSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class addingCart : Migration
+    public partial class AddingCartsAgainONE : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

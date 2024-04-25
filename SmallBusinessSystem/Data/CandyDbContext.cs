@@ -11,7 +11,7 @@ namespace SmallBusinessSystem.Data
         { 
 
         }
-        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Cart> CartNew{ get; set; }
         public DbSet<Candy> Candies { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
