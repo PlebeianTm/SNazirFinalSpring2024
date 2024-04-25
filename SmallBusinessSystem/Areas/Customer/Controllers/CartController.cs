@@ -71,6 +71,30 @@ namespace SmallBusinessSystem.Areas.Customer.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
-    }
+        public IActionResult ReviewOrder()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // fetches the user id
+            var cartItemsList = _dbContext.Carts.Where(c => c.UserId == userId).Include(c => c.Candy);
+            ShoppingCartVM shoppingCartVM = new ShoppingCartVM
+            {
+                CartItems = cartItemsList,
+                Order = new Order()
+
+            };
+            foreach (var cartItem in shoppingCartVM.CartItems)
+            {
+                cartItem.SubTotal = cartItem.Candy.CandyPrice * cartItem.Quantity; //subtotal for the individual cart item
+                shoppingCartVM.Order.OrderTotal += cartItem.SubTotal;
+            }
+            shoppingCartVM.Order.ApplicationUser = _dbContext.ApplicationUsers.Find(userId);
+            shoppingCartVM.Order.CustomerName = shoppingCartVM.Order.ApplicationUser.Name;
+            shoppingCartVM.Order.StreetAddress = shoppingCartVM.Order.ApplicationUser.StreetAddress;
+            shoppingCartVM.Order.City = shoppingCartVM.Order.ApplicationUser.City;
+            shoppingCartVM.Order.State = shoppingCartVM.Order.ApplicationUser.State;
+            shoppingCartVM.Order.PostalCode = shoppingCartVM.Order.ApplicationUser.PostalCode;
+            shoppingCartVM.Order.Phone = shoppingCartVM.Order.ApplicationUser.PhoneNumber;
+            return View(shoppingCartVM);
+        }
+        }
 
 }
