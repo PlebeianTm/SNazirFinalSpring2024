@@ -2,6 +2,7 @@
 using Microsoft.Data;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using SmallBusinessSystem.Data;
 using SmallBusinessSystem.Models;
 using System;
@@ -13,12 +14,12 @@ namespace SmallBusinessSystem.Areas.Admin.Controllers
     public class CandyController : Controller
     {
         private CandyDbContext _dbContext;
-        private IWebHostEnvironment _enviornment;
+        private IWebHostEnvironment _environment;
 
         public CandyController(CandyDbContext dbContext, IWebHostEnvironment environment)
         {
             _dbContext = dbContext;
-            _enviornment = environment;
+            _environment = environment;
         }
 
         public IActionResult Index() //right click index to create folder 
@@ -37,9 +38,11 @@ namespace SmallBusinessSystem.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(Candy candyObj, IFormFile imgFile)
         {
-            //if (ModelState.IsValid) 
-            // {
-            string wwwrootPath = _enviornment.WebRootPath;
+            if (ModelState.IsValid)
+            {
+
+
+                string wwwrootPath = _environment.WebRootPath;
 
             if (imgFile != null)
             {
@@ -49,13 +52,13 @@ namespace SmallBusinessSystem.Areas.Admin.Controllers
                 }
                 candyObj.ImgUrl = @"\Images\CandyImages\" + imgFile.FileName;
             }
-            _dbContext.Candies.Add(candyObj);
-            _dbContext.SaveChanges();
+                _dbContext.Candies.Add(candyObj);
+                _dbContext.SaveChanges();
 
-            return RedirectToAction("Index", "Candy");
-            // }
+                return RedirectToAction("Index", "Candy");
+            }
 
-            //return View(candyObj);
+            return View(candyObj);
 
         }
 
@@ -74,17 +77,40 @@ namespace SmallBusinessSystem.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, [Bind("CandyId, CandyName, Description, CandyPrice,ImgUrl,CandyQty")] Candy candyObj)
+        public IActionResult Edit(Candy candyObj, IFormFile? imgFile)
         {
-            if (ModelState.IsValid)
-            {
-                _dbContext.Candies.Update(candyObj);
-                _dbContext.SaveChanges();
+            string wwwrootPath = _environment.WebRootPath;
 
-                return RedirectToAction("Index", "Candy");
+            if (ModelState.IsValid) 
+            {
+                if (imgFile != null) 
+                {
+                    if (!string.IsNullOrEmpty(candyObj.ImgUrl)) 
+                    {
+                        var oldImgPath = Path.Combine(wwwrootPath, candyObj.ImgUrl.TrimStart('\\'));
+
+                        if (System.IO.File.Exists(oldImgPath))
+                        {
+                            System.IO.File.Delete(oldImgPath);
+                        }
+                    }
+                    using (var fileStream = new FileStream(Path.Combine(wwwrootPath, @"Images\CandyImages\" + imgFile.FileName), FileMode.Create))
+                    {
+
+                        imgFile.CopyTo(fileStream);
+
+                    }
+
+                    candyObj.ImgUrl = @"\Images\CandyImages\" + imgFile.FileName;
+
+                }
+
+                _dbContext.Update(candyObj);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
 
             }
-            return View(candyObj);
+            return View(candyObj); 
         }
 
     }

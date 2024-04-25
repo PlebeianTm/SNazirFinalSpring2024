@@ -318,21 +318,20 @@ namespace SmallBusinessSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"));
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("CandyId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("CartId");
 
-                    b.HasIndex("CandyId");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CandyId");
 
                     b.ToTable("Carts");
                 });
@@ -413,15 +412,13 @@ namespace SmallBusinessSystem.Migrations
 
             modelBuilder.Entity("SmallBusinessSystem.Models.Cart", b =>
                 {
+                    b.HasOne("SmallBusinessSystem.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("SmallBusinessSystem.Models.Candy", "Candy")
                         .WithMany()
                         .HasForeignKey("CandyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SmallBusinessSystem.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -3,7 +3,7 @@
 <h1>Update Candy</h1>
 
 <div class="border col-md-10">
-    <form asp-action="Edit">
+    <form asp-action="Edit" enctype="multipart/form-data">
 
        <input asp-for="CandyId" hidden/>
         <input asp-for="ImgUrl" hidden/>
@@ -32,7 +32,7 @@
 
          <div class="form-group m-4">
             <label asp-for="ImgUrl" class="control-label">Candy Image</label>
-            <input type="file" asp-for="ImgUrl" class="form-control"/>
+            <input type="file" name="imgFile" asp-for="ImgUrl" class="form-control"/>
         </div> 
 
 

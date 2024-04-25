@@ -8,11 +8,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SmallBusinessSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class candyw : Migration
+    public partial class helppppppp : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -32,6 +33,12 @@ namespace SmallBusinessSystem.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(21)", maxLength: 21, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StreetAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -61,7 +68,8 @@ namespace SmallBusinessSystem.Migrations
                     CandyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CandyPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CandyQty = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,8 +122,8 @@ namespace SmallBusinessSystem.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -159,8 +167,8 @@ namespace SmallBusinessSystem.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -174,16 +182,42 @@ namespace SmallBusinessSystem.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Carts",
+                columns: table => new
+                {
+                    CartId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CandyId = table.Column<int>(type: "int", nullable: false),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Quantity = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Carts", x => x.CartId);
+                    table.ForeignKey(
+                        name: "FK_Carts_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Carts_Candies_CandyId",
+                        column: x => x.CandyId,
+                        principalTable: "Candies",
+                        principalColumn: "CandyId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Candies",
-                columns: new[] { "CandyId", "CandyName", "CandyPrice", "Description", "ImgUrl" },
+                columns: new[] { "CandyId", "CandyName", "CandyPrice", "CandyQty", "Description", "ImgUrl" },
                 values: new object[,]
                 {
-                    { 1, "Gummy Worms", 5.99m, "Sweet chewy worm candy", "" },
-                    { 2, "Homestyle Milk Chocolate Bar", 2.99m, "Store exclusive homestyle chocolate bar.", "" },
-                    { 3, "Sour Gummy Worms", 6.99m, "Sweet chewy worm candy with sour sugar coating on top", "" },
-                    { 4, "Homestyle Peanut Butter Cups", 6.99m, "Peanut butter center with chocolate cover on the outside.", "" },
-                    { 5, "Chocolate Covered Almonds", 3.99m, "Salted almonds covered in our hometyle milk chocolate.", "" }
+                    { 1, "Gummy Worms", 5.99m, 100, "Sweet chewy worm candy", "\\Images\\CandyImages\\GummyWorms.jpeg" },
+                    { 2, "Homestyle Milk Chocolate Bar", 2.99m, 140, "Store exclusive homestyle chocolate bar.", "\\Images\\CandyImages\\ChocolateBar.jpeg" },
+                    { 3, "Sour Gummy Worms", 6.99m, 130, "Sweet chewy worm candy with sour sugar coating on top", "\\Images\\CandyImages\\SourGummyWorms.jpeg" },
+                    { 4, "Homestyle Peanut Butter Cups", 6.99m, 100, "Peanut butter center with chocolate cover on the outside.", "\\Images\\CandyImages\\PeanutButterCups.png" },
+                    { 5, "Chocolate Covered Almonds", 3.99m, 200, "Salted almonds covered in our hometyle milk chocolate.", "\\Images\\CandyImages\\CoveredAlmonds.jpeg" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -224,6 +258,16 @@ namespace SmallBusinessSystem.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Carts_ApplicationUserId",
+                table: "Carts",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Carts_CandyId",
+                table: "Carts",
+                column: "CandyId");
         }
 
         /// <inheritdoc />
@@ -245,13 +289,16 @@ namespace SmallBusinessSystem.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Candies");
+                name: "Carts");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Candies");
         }
     }
 }
