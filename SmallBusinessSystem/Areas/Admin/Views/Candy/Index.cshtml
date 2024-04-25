@@ -1,56 +1,35 @@
 ﻿@model List<Candy>
 
+<h1 class="text-center my-4">Candies List</h1>
 
-<h1>Candies List </h1>
-
-
-<div class="pt-2 pb-2">
+<div class="table-responsive">
     <table class="table table-bordered table-striped">
-        <thead>
+        <thead class="thead-dark">
             <tr>
-
                 <th>Candy Name</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Edit</th>
-               @*  <th>Details</th> *@
-                
-
-         
             </tr>
-
         </thead>
         <tbody>
             @foreach (var eachCandy in Model)
             {
-                 <tr>
-
+                <tr>
                     <td>@eachCandy.CandyName</td>
                     <td>@eachCandy.Description</td>
-                    <td>@eachCandy.CandyPrice</td>
+                    <td>$@eachCandy.CandyPrice</td>
                     <td>@eachCandy.CandyQty</td>
-
-
                     <td>
-                        <a asp-controller="Candy" asp-action="Edit" asp-route-id="@eachCandy.CandyId">Edit</a>
-                       @*  <a asp-controller="Instructor" asp-action="Delete" asp-route-id="@eachCandy.InstructorID">Delete</a> | *@
-
-                    
+                        <a asp-controller="Candy" asp-action="Edit" asp-route-id="@eachCandy.CandyId" class="btn btn-warning">Edit</a>
                     </td>
-                   @*  <td><a asp-controller="Candy" asp-action="Details" asp-route-id="@eachCandy.CandyId">Details</a></td> *@
-                </tr> 
+                </tr>
             }
         </tbody>
-
     </table>
-
 </div>
 
-<div>
-    <div class="col-6">
-    </div>
-    <div class="col-6">
-        <a asp-controller="Candy" asp-action="Create" class="btn btn-primary">Create New Candy</a>
-    </div>
+<div class="text-center my-4">
+    <a asp-controller="Candy" asp-action="Create" class="btn btn-success">Create New Candy</a>
 </div>

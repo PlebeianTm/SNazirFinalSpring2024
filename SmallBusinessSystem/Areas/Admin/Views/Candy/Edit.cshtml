@@ -4,13 +4,11 @@
 
 <div class="border col-md-10">
     <form asp-action="Edit" enctype="multipart/form-data">
-
-       <input asp-for="CandyId" hidden/>
-        <input asp-for="ImgUrl" hidden/>
-
+        <input asp-for="CandyId" hidden />
+        <input asp-for="ImgUrl" hidden />
 
         <div class="form-group m-4">
-            <label asp-for="CandyName" class="control-label">Class Name</label>
+            <label asp-for="CandyName" class="control-label">Candy Name</label>
             <input asp-for="CandyName" class="form-control" />
         </div>
 
@@ -24,30 +22,18 @@
             <input asp-for="CandyPrice" class="form-control" />
         </div>
 
-         <div class="form-group m-4">
-            <label asp-for="CandyQty" class="control-label"></label>
+        <div class="form-group m-4">
+            <label asp-for="CandyQty" class="control-label">Candy Quantity</label>
             <input asp-for="CandyQty" class="form-control" />
         </div>
 
-
-         <div class="form-group m-4">
-            <label asp-for="ImgUrl" class="control-label">Candy Image</label>
-            <input type="file" name="imgFile" asp-for="ImgUrl" class="form-control"/>
-        </div> 
-
-
-
-
         <div class="form-group m-4">
-
-            <input type="Submit" value="Save Changes" class="form-control btn btn-primary" />
+            <label asp-for="ImgUrl" class="control-label">Candy Image</label>
+            <input type="file" name="imgFile" asp-for="ImgUrl" class="form-control" />
         </div>
 
-
-
+        <div class="form-group m-4">
+            <input type="Submit" value="Save Changes" class="form-control btn btn-primary" />
+        </div>
     </form>
-
-
-
-
 </div>
