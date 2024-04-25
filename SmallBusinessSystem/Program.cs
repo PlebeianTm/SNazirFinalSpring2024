@@ -15,7 +15,7 @@ namespace SmallBusinessSystem
             var connString = builder.Configuration.GetConnectionString("DefaultConnection"); // necessary
             builder.Services.AddDbContext<CandyDbContext>(options => options.UseSqlServer(connString));
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CandyDbContext>();
+            builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<CandyDbContext>();
 
             var app = builder.Build();
 
