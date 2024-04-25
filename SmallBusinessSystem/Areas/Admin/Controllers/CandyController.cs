@@ -43,7 +43,7 @@ namespace SmallBusinessSystem.Areas.Admin.Controllers
 
             if (imgFile != null)
             {
-                using (var fileStream = new FileStream(Path.Combine(wwwrootPath, @"\Images\CandyImages\" + imgFile.FileName), FileMode.Create))
+                using (var fileStream = new FileStream(Path.Combine(wwwrootPath, @"Images\CandyImages\" + imgFile.FileName), FileMode.Create))
                 {
                     imgFile.CopyTo(fileStream);
                 }
