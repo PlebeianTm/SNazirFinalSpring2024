@@ -13,8 +13,9 @@ namespace SmallBusinessSystem.Models
             [ForeignKey("CandyId")]
             [ValidateNever]
             public Candy Candy{ get; set; }
-            //public string UserId { get; set; }
-            //[ForeignKey("UserId")]
+
+            public string UserId { get; set; }
+            [ForeignKey("UserId")]
             [ValidateNever]
             public ApplicationUser ApplicationUser { get; set; } // navigational property
             public int Quantity { get; set; }
