@@ -5,8 +5,10 @@
 <div class="border col-md-10">
     <form asp-action="Edit">
 
-        <input type="hidden" asp-for="CandyId" />
-       @*  <input type="hidden" asp-for="ImgUrl"/> *@
+       <input asp-for="CandyId" hidden/>
+        <input asp-for="ImgUrl" hidden/>
+
+
         <div class="form-group m-4">
             <label asp-for="CandyName" class="control-label">Class Name</label>
             <input asp-for="CandyName" class="form-control" />
@@ -15,19 +17,23 @@
         <div class="form-group m-4">
             <label asp-for="Description" class="control-label">Description</label>
             <input asp-for="Description" class="form-control" />
-        </div
+        </div>
+
         <div class="form-group m-4">
             <label asp-for="CandyPrice" class="control-label">Candy Price</label>
             <input asp-for="CandyPrice" class="form-control" />
-        </div
+        </div>
+
          <div class="form-group m-4">
             <label asp-for="CandyQty" class="control-label"></label>
             <input asp-for="CandyQty" class="form-control" />
-        </div
+        </div>
+
+
          <div class="form-group m-4">
             <label asp-for="ImgUrl" class="control-label">Candy Image</label>
             <input type="file" asp-for="ImgUrl" class="form-control"/>
-        </div 
+        </div> 
 
 
 
