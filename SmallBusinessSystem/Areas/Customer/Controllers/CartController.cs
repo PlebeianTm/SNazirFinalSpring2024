@@ -10,7 +10,7 @@ using SmallBusinessSystem.Models.ViewModels;
 namespace SmallBusinessSystem.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    //[Authorize(Roles = "Customer")]
+    [Authorize(Roles = "Admin,Customer")]
     public class CartController : Controller
     {
         private CandyDbContext _dbContext;
