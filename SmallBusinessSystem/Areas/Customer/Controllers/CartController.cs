@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using SmallBusinessSystem.Data;
+using SmallBusinessSystem.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmallBusinessSystem.Data;
 using System.Security.Claims;
@@ -6,7 +9,7 @@ using System.Security.Claims;
 namespace SmallBusinessSystem.Areas.Customer.Controllers
 {
     [Area("Customer")]
-
+    [Authorize(Roles = "Customer")]
     public class CartController : Controller
     {
         private CandyDbContext _dbContext;
