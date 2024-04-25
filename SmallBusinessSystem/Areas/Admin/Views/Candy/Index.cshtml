@@ -21,8 +21,10 @@
                     <td>@eachCandy.Description</td>
                     <td>$@eachCandy.CandyPrice</td>
                     <td>@eachCandy.CandyQty</td>
+
                     <td>
-                        <a asp-controller="Candy" asp-action="Edit" asp-route-id="@eachCandy.CandyId" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Candy" asp-action="Edit" asp-route-id="@eachCandy.CandyId">Edit</a> |
+                        <a asp-controller="Candy" asp-action="Delete" asp-route-id="@eachCandy.CandyId">Delete</a>
                     </td>
                 </tr>
             }
