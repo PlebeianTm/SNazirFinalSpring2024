@@ -113,6 +113,11 @@ namespace SmallBusinessSystem.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            if(!_roleManager.RoleExistsAsync("Customer").GetAwaiter().GetResult())
+            {
+                _roleManager.CreateAsync( new IdentityRole("Customer")).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole("Admin")).GetAwaiter().GetResult();
+            }
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -138,6 +143,8 @@ namespace SmallBusinessSystem.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, "Customer");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
