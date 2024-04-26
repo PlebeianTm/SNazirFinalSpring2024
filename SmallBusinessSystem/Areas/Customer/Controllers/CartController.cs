@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using SmallBusinessSystem.Data;
 using System.Security.Claims;
 using SmallBusinessSystem.Models.ViewModels;
+using Stripe.Checkout;
 
 namespace SmallBusinessSystem.Areas.Customer.Controllers
 {
@@ -135,8 +136,50 @@ namespace SmallBusinessSystem.Areas.Customer.Controllers
                 _dbContext.OrderDetails.Add(orderDetail);
             }
             _dbContext.SaveChanges();
-            return RedirectToAction("OrderConfirmation", new { id= shoppingCartVM.Order.OrderId});
+            var domain = Request.Scheme + "://" + Request.Host.Value + "/";
+            var options = new Stripe.Checkout.SessionCreateOptions
+            {
+                //SuccessUrl = "https://localhost:7032/" + $"customer/cart/orderconfirmation?id={shoppingCartVM.Order.OrderId}",
+                SuccessUrl = domain + $"customer/cart/orderconfirmation?id={shoppingCartVM.Order.OrderId}",
+                //CancelUrl = "https://localhost:7032/" + "customer/cart/index",
+                CancelUrl = domain + "customer/cart/index",
+                LineItems = new List<Stripe.Checkout.SessionLineItemOptions>(),
+                //{
+                //    new Stripe.Checkout.SessionLineItemOptions
+                //    {
+                //        Price = "price_1MotwRLkdIwHu7ixYcPLm5uZ",
+                //        Quantity = 2,
+                //    },
+                // },
+                Mode = "payment",
 
+            };
+
+            foreach (var eachCartItem in shoppingCartVM.CartItems)
+            {
+                var sessionLineItem = new SessionLineItemOptions
+                {
+                    PriceData = new SessionLineItemPriceDataOptions()
+                    {
+                        UnitAmount = (long)(eachCartItem.Candy.CandyPrice * 100), // 20.99 -> 2099
+                        Currency = "usd",
+                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        {
+                            Name = eachCartItem.Candy.CandyName
+                        }
+                    },
+                    Quantity = eachCartItem.Quantity,
+                };
+                options.LineItems.Add(sessionLineItem);
+
+            }
+            var service = new Stripe.Checkout.SessionService();
+            Session session = service.Create(options);
+
+            shoppingCartVM.Order.SessionID = session.Id;
+            _dbContext.SaveChanges();
+            Response.Headers.Add("Location", session.Url);
+            return new StatusCodeResult(303);
         }
         public IActionResult OrderConfirmation(int id)
         {
