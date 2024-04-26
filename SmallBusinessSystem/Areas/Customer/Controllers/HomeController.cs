@@ -48,11 +48,12 @@ namespace SmallBusinessSystem.Areas.Customer.Controllers
         [Authorize]
         public IActionResult Details(Cart cart)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); //fetches user ID
-
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
             cart.UserId = userId;
 
             Cart existingCart = _dbContext.Carts.FirstOrDefault(c => c.UserId == userId && c.CandyId == cart.CandyId);
+
+
 
             if (existingCart != null)
             {

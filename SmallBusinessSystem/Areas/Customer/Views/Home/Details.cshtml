@@ -1,6 +1,6 @@
 ﻿@model Cart
 
-<form method="post">
+<form id="addToCartForm" method="post">
     <input asp-for="CandyId" hidden />
     <div class="row m-5 border-2 shadow border-rounded">
         <div class="card text-center">
@@ -18,7 +18,7 @@
                                 <span class="input-group-text">Quantity</span>
                                 <input asp-for="Quantity" class="form-control" />
                             </div>
-                            <input type="submit" value="Add to Cart" class="btn btn-success" />
+                            <input type="button" value="Add to Cart" class="btn btn-success" id="addToCartButton" />
                         </div>
                     </div>
                 </div>
@@ -26,3 +26,18 @@
         </div>
     </div>
 </form>
+
+<div id="authMessage" class="alert alert-warning d-none" role="alert">
+    Please Register or  Login to add items to your cart.
+</div>
+
+<script>
+    document.getElementById("addToCartButton").addEventListener("click", function () {
+        var isAuthenticated = @User.Identity.IsAuthenticated.ToString().ToLower();
+        if (!isAuthenticated) {
+            document.getElementById("authMessage").classList.remove("d-none");
+        } else {
+            document.getElementById("addToCartForm").submit();
+        }
+    });
+</script>

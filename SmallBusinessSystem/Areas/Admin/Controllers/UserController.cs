@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SmallBusinessSystem.Data;
 
 namespace SmallBusinessSystem.Areas.Admin.Controllers
 {
+    [Area("admin")]
+    [Authorize(Roles = "Admin,Employee")]
+
     public class UserController : Controller
     {
         private CandyDbContext _dbContext;

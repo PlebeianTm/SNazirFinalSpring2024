@@ -7,8 +7,8 @@ using SmallBusinessSystem.Models.ViewModels;
 
 namespace SmallBusinessSystem.Areas.Admin.Controllers
 {
-    //[Area("admin")]
-    //[Authorize(Roles = "Admin,Employee")]
+    [Area("admin")]
+    [Authorize(Roles = "Admin,Employee")]
     public class OrderController : Controller
     {
         private CandyDbContext _dbContext;
