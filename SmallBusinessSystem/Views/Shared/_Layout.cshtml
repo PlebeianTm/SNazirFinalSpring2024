@@ -30,10 +30,10 @@
 
                         }
 
-                        @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                        @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             @* <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="Customer" asp-controller="Cart" asp-action="Index">Cart</a>

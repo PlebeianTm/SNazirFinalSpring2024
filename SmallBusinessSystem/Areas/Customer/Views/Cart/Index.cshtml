@@ -25,26 +25,21 @@
                         </div>
                         <div class="col-2">
                             <h6>
-                            @item.Candy.CandyPrice.ToString("c") &nbsp; x &nbsp; @item.Quantity
+                                @item.Candy.CandyPrice.ToString("c")   x   @item.Quantity
                             </h6>
-                            <br/>
                             Subtotal : @item.SubTotal
                         </div>
                         <div class="col-1">
-                            <div class="btn-group">
+                            <div class="btn-group" style="margin-right: 10px;">
                                 <a asp-action="IncrementByOne" class="btn btn-outline-primary py-2" asp-route-id="@item.CartId"> + </a>
-                                
-                                &nbsp;
+
+
 
                                 <a asp-action="DecrementByOne" class="btn btn-outline-primary py-2" asp-route-id="@item.CartId"> - </a>
-                           
-                                
                             </div>
-
-                      
                         </div>
                         <div class="col-1">
-                            <a asp-action="RemoveFromCart" class="btn btn-warning" asp-route-id="@item.CartId">Remove</a>
+                            <a asp-action="RemoveFromCart" class="btn btn-warning" style="margin-left: 30px;" asp-route-id="@item.CartId">Remove</a>
                         </div>
                     </div>
                 }
