@@ -1,7 +1,49 @@
-﻿@model int
-<p>
-    Your order has been placed!
-    Order ID: @Model
-
-    Thanks!
-</p>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmation</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f3f3f3;
+        color: #333;
+        text-align: center;
+        padding: 50px;
+    }
+    .order-confirmation {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 20px;
+        display: inline-block;
+        margin: auto;
+    }
+    .order-confirmation h1 {
+        color: #27ae60;
+        font-size: 24px;
+    }
+    .order-id {
+        background-color: #27ae60;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    .thanks-message {
+        margin-top: 40px;
+        color: #888;
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+    <div class="order-confirmation">
+        <h1>Your order has been placed!</h1>
+        <div class="order-id">Order ID: @Model</div>
+        <p class="thanks-message">Thanks for shopping with us!</p>
+    </div>
+</body>
+</html>
