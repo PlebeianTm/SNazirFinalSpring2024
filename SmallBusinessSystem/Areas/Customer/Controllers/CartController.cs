@@ -152,6 +152,7 @@ namespace SmallBusinessSystem.Areas.Customer.Controllers
                 //    },
                 // },
                 Mode = "payment",
+                //we did it
 
             };
 
